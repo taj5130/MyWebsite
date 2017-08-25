@@ -1,0 +1,68 @@
+<!-- This is the home page to the T.A.J. website. -->
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    #TopFullArea{
+      clear:both;
+      width:100%;
+      height:10%;
+      /*background-color:red;*/
+      background: (rgb(0,0,0), yellow); /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(rgb(0,0,0), yellow); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(rgb(0,0,0), yellow); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(rgb(0,0,0), yellow); /* For Firefox 3.6 to 15 */
+      background: linear-gradient(rgb(0,0,0), yellow); /* Standard syntax */
+    }
+    #BottomLeftArea{
+      float:left;
+      clear:left;
+      width:10%;
+      height:90%;
+      background-color:orange;
+    }
+    #BottomRightArea{
+      float:right;
+      clear:right;
+      width:90%;
+      height:90%;
+      background-color:yellow;
+    }
+  </style>
+</head>
+<body style="margin:0px">
+  <div>
+    <div id="TopFullArea"></div>
+    <div id="BottomLeftArea"></div>
+    <canvas id="BottomRightArea"></canvas>
+  </div>
+</body>
+<script>
+  var c = document.getElementById("BottomRightArea");
+  var ctx = c.getContext("2d");
+  ctx.beginPath();
+  ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  var c=0;
+  var timeout, clicker=$("#TopFullArea");
+
+  console.log("Hello noobs");
+
+  $("#TopFullArea").mouseover(function(){
+      timeout = setInterval(function(){
+          if(c++ >=255){
+            c=0;
+          }
+          console.log(c);
+          $("#TopFullArea").css("background-color","rgb("+c+",255,0)");
+      }, 0);
+      return false;
+  });
+
+  $(document).mouseout(function(){
+      clearInterval(timeout);
+      return false;
+  });
+</script>
+</html>
