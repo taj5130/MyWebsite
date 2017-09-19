@@ -4,29 +4,35 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
     #TopArea{
+      position:fixed;
       clear:both;
       width:100%;
       height:10%;
-      /*background-color:red;*/
-      background: (rgb(0,0,0), yellow); /* For browsers that do not support gradients */
-      background: -webkit-linear-gradient(rgb(0,0,0), yellow); /* For Safari 5.1 to 6.0 */
-      background: -o-linear-gradient(rgb(0,0,0), yellow); /* For Opera 11.1 to 12.0 */
-      background: -moz-linear-gradient(rgb(0,0,0), yellow); /* For Firefox 3.6 to 15 */
-      background: linear-gradient(rgb(0,0,0), yellow); /* Standard syntax */
+      background-color:rgba(186, 153, 117, 0.5);
+      /*background: (rgb(0,0,0), yellow); /* For browsers that do not support gradients */
+      /*background: -webkit-linear-gradient(rgb(0,0,0), yellow); /* For Safari 5.1 to 6.0 */
+      /*background: -o-linear-gradient(rgb(0,0,0), yellow); /* For Opera 11.1 to 12.0 */
+      /*background: -moz-linear-gradient(rgb(0,0,0), yellow); /* For Firefox 3.6 to 15 */
+      /*background: linear-gradient(rgb(150, 0, 0), rgb(255, 255, 255)); /* Standard syntax */
+      z-index:2;
     }
     #BottomLeftArea{
+      position:fixed;
       float:left;
       clear:left;
       width:10%;
-      height:90%;
-      background-color:orange;
+      height:100%;
+      background-color:rgba(140, 122, 101, 0.5);
+      z-index:1;
     }
     #BottomRightArea{
+      position:fixed;
       float:right;
       clear:right;
-      width:90%;
-      height:90%;
-      background-color:yellow;
+      width:100%;
+      height:100%;
+      background-color:rgb(48, 44, 40);
+      z-index:0;
     }
   </style>
 </head>
@@ -34,35 +40,70 @@
   <div>
     <div id="TopArea"></div>
     <div id="BottomLeftArea"></div>
-    <canvas id="BottomRightArea"></canvas>
+    <div id="BottomRightArea"></div>
   </div>
 </body>
 <script>
-  var c = document.getElementById("BottomRightArea");
-  var ctx = c.getContext("2d");
-  ctx.beginPath();
-  ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-  ctx.stroke();
 
-  var c=0;
-  var timeout, clicker=$("#TopArea");
+  // var c = document.getElementById("BottomRightArea");
+  // var ctx = c.getContext("2d");
+  // ctx.beginPath();
+  // ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+  // ctx.stroke();
+  //
+  // var text = ['a', 's', 'd', 'g', 'h'];
+  // var disp = $('#BottomRightArea');
+  // var r = 0;
+  // var g = 0;
+  // var b = 0;
+  //
+  // Need to return 0 for hitting last rgb values in gradient
+  // function getNextRGBInGradient(Gradient g) {
+  //
+  //   var factor=50;
+  //   r+=factor;
+  //
+  //   if(r>=255) {
+  //     r=0;
+  //     g+=factor;
+  //   }
+  //   if(g>=255) {
+  //     g=0;
+  //     b+=factor;
+  //   }
+  //   if(b>=255) {
+  //     b=0;
+  //   }
+  //
+  //   console.log('rgb('+r+', '+g+', '+b+")");
+  // }
+  //
+  // for(int i = 0; i < text.length(); i++) {
+  //   var currentText = $('#BottomRightArea'.text());
+  //
+  //   currentText = currentText + text[i];
+  // }
+  //
+  // var c=0;
+  // var timeout, clicker=$("#TopArea");
+  //
+  // console.log("Hello noobs");
+  //
+  // $("#TopArea").mouseover(function(){
+  //     timeout = setInterval(function(){
+  //         colorizer();
+  //         console.log("-");
+  //         $("#TopArea").css("background-color","rgb(255,255,"+r+")");
+  //     }, 100);
+  //     return false;
+  // });
+  //
+  // $(document).mouseout(function(){
+  //     clearInterval(timeout);
+  //     return false;
+  // });
 
-  console.log("Hello noobs");
 
-  $("#TopArea").mouseover(function(){
-      timeout = setInterval(function(){
-          if(c++ >=255){
-            c=0;
-          }
-          console.log(c);
-          $("#TopArea").css("background-color","rgb("+c+",255,0)");
-      }, 0);
-      return false;
-  });
 
-  $(document).mouseout(function(){
-      clearInterval(timeout);
-      return false;
-  });
 </script>
 </html>
